@@ -58,9 +58,9 @@ main().then((res)=>{
 
 
 //home route 
-// app.get("/",(req,res)=>{
-//     res.send("working");
-// });
+app.get("/",(req,res)=>{
+    res.redirect("/listings");
+});
 
 const store=MongoStore.create({
       mongoUrl:process.env.ATLASDB_URL,
