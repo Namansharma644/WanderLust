@@ -1,29 +1,95 @@
-<% layout("/layouts/boilerplate") %>
+<%- layout("/layouts/boilerplate") %>
 
-    <body>
-        <div class="row mt-3">
-            <div class="col-6 offset-3">
-                <h1>SignUp for WanderLust</h1>
-                <form action="/singUp" method="POST" class="needs-validation" novalidate>
-                     <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input name="username"  type="text" class="form-control"
-                            required id="username">
-                        <div class="valid-feedback">looks good</div>
-                        <div class="invalid-feedback">username Should be vaild</div>
-                    </div>
-                     <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input name="email"  type="email" class="form-control"
-                            required id="email">
-                    </div>
-                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input name="password"  type="password" class="form-control"
-                            required id="password">
-                    </div>
-                    <button class="btn btn-success">SignUp</button>
-                </form>
-            </div>
+<div class="wl-form-container">
+  <div class="wl-form-card">
+    <div class="wl-form-header">
+      <!-- Icon -->
+      <div style="width:56px; height:56px; border-radius:50%; background:var(--color-accent-light); display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-md);">
+        <i class="fa-regular fa-compass" style="color:var(--color-accent); font-size:1.5rem;"></i>
+      </div>
+      <h2>Join WanderLust</h2>
+      <p>Create an account to discover and list amazing stays.</p>
+    </div>
+
+    <form action="/singUp" method="POST" class="needs-validation" novalidate>
+
+      <div class="wl-form-group">
+        <label for="username" class="wl-form-label">Username <span style="color:var(--color-accent);">*</span></label>
+        <input
+          name="username"
+          type="text"
+          class="wl-form-input"
+          id="username"
+          placeholder="Choose a username"
+          autocomplete="username"
+          required
+        >
+        <div class="valid-feedback">Username looks good!</div>
+        <div class="invalid-feedback">Please choose a valid username.</div>
+      </div>
+
+      <div class="wl-form-group">
+        <label for="email" class="wl-form-label">Email address <span style="color:var(--color-accent);">*</span></label>
+        <input
+          name="email"
+          type="email"
+          class="wl-form-input"
+          id="email"
+          placeholder="you@example.com"
+          autocomplete="email"
+          required
+        >
+        <div class="invalid-feedback">Please enter a valid email address.</div>
+      </div>
+
+      <div class="wl-form-group">
+        <label for="password" class="wl-form-label">Password <span style="color:var(--color-accent);">*</span></label>
+        <div style="position:relative;">
+          <input
+            name="password"
+            type="password"
+            class="wl-form-input"
+            id="password"
+            placeholder="Create a secure password"
+            autocomplete="new-password"
+            required
+            style="padding-right:3rem;"
+          >
+          <button
+            type="button"
+            id="togglePwd"
+            aria-label="Toggle password visibility"
+            style="position:absolute; right:1rem; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; color:var(--color-text-muted); font-size:0.9rem;"
+          >
+            <i class="fa-regular fa-eye" id="togglePwdIcon"></i>
+          </button>
         </div>
-    </body>
+        <div class="invalid-feedback">Please create a password.</div>
+      </div>
+
+      <div class="wl-form-footer">
+        <button class="wl-btn wl-btn-primary wl-btn-lg" type="submit">
+          <i class="fa-solid fa-user-plus"></i>
+          Create Account
+        </button>
+      </div>
+    </form>
+
+    <div class="wl-form-alt">
+      Already have an account? <a href="/login">Log in</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById("togglePwd");
+  const pwdInput = document.getElementById("password");
+  const toggleIcon = document.getElementById("togglePwdIcon");
+  if(toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      const isPassword = pwdInput.type === "password";
+      pwdInput.type = isPassword ? "text" : "password";
+      toggleIcon.className = isPassword ? "fa-regular fa-eye-slash" : "fa-regular fa-eye";
+    });
+  }
+</script>

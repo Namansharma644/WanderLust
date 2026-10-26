@@ -1,53 +1,56 @@
-<style>
-  .btn-search{
-    background-color: #fe424d;
-    color:#ffffff;
-    border-radius: 25px;
-    padding: 0 1rem 0 1rem;
-  }
-  .btn-search:hover{
-    background-color: #fe424d;
-    color:#ffffff;
-  }
-
-  .btn-search i{
-    display:inline;
-    margin-right: 0.5rem;
-  }
-
-  .search-inp{
-    border-radius: 25px;
-    padding: 0.5rem 3rem 0.5rem 3rem;
-    font-size: 1rem;
-  }
-</style>
-
-<nav class="navbar navbar-expand-lg bg-body-light border-bottom sticky-top">
+<nav class="wl-navbar navbar navbar-expand-lg">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+    <!-- Brand -->
+    <a class="wl-brand navbar-brand" href="/listings">
+      <i class="fa-regular fa-compass"></i>
+      <span>WanderLust</span>
+    </a>
+
+    <!-- Mobile Toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#wlNavbar"
+      aria-controls="wlNavbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <div class="navbar-nav">
-        <a class="nav-link" href="/listings">Explore</a>
-      </div>
-      <div class="navbar-nav mx-auto">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2 search-inp" type="search" placeholder="Search destination"  />
-          <button class="btn btn-search"  type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+
+    <div class="collapse navbar-collapse" id="wlNavbar">
+
+      <!-- Centre search -->
+      <div class="mx-auto my-2 my-lg-0">
+        <form class="wl-nav-search" role="search" method="get" action="/listings">
+          <i class="fa-solid fa-magnifying-glass" style="color:var(--color-text-muted); font-size:0.85rem; flex-shrink:0;"></i>
+          <input type="search" name="q" placeholder="Search destinations…" aria-label="Search destinations" autocomplete="off">
+          <button class="wl-nav-search-btn" type="submit" aria-label="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
         </form>
       </div>
-      <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings/new"><b>Airbnb Your Home</b></a>
-        <% if(!currUser){ %>
-          <a class="nav-link" aria-current="page" href="/singUp"><b>sign up</b></a>
-          <a class="nav-link" href="/login"><b>Log in</b></a>
-          <% } %>
-            <% if(currUser){ %>
-              <a class="nav-link" href="/logout"><b>Log out</b></a>
-              <% } %>
+
+      <!-- Right-side links -->
+      <div class="wl-nav-links wl-nav-auth ms-lg-3">
+        <a class="nav-link" href="/listings">Explore</a>
+
+        <% if(currUser){ %>
+          <a class="nav-link" href="/listings/new">List your property</a>
+          <a class="wl-nav-btn wl-nav-btn-outline ms-1" href="/logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Log out
+          </a>
+          <div class="wl-nav-user ms-1">
+            <div class="wl-nav-user-avatar">
+              <%= currUser.username ? currUser.username[0].toUpperCase() : 'U' %>
+            </div>
+            <span style="font-size:var(--font-size-sm); font-weight:var(--font-weight-medium); color:var(--color-text-primary);">
+              <%= currUser.username %>
+            </span>
+          </div>
+        <% } else { %>
+          <a class="nav-link" href="/listings/new">List your property</a>
+          <a class="wl-nav-btn wl-nav-btn-outline ms-1" href="/singUp">Sign up</a>
+          <a class="wl-nav-btn wl-nav-btn-primary ms-1" href="/login">Log in</a>
+        <% } %>
       </div>
+
     </div>
+  </div>
 </nav>

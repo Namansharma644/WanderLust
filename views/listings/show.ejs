@@ -1,118 +1,204 @@
-<% layout("/layouts/boilerplate") %>
+<%- layout("/layouts/boilerplate") %>
 
-    <body>
-        <div class="row">
-            <div class="col-8 offset-3 mt-3">
-                <h3>
-                    <%= listing.title %>
-                </h3>
-            </div>
-            <div class="card col-6 offset-3 show-card listing-card">
-                <img src="<%= listing.image.url %>" class="card-img-top show-image" alt="listing_image">
-                <div class="card-body">
-                    <p class="card-text">Owned By <i>
-                            <%= listing.owner.username %>
-                        </i></p>
-                    <p class="card-text">
-                        <%= listing.description %>
-                    </p>
-                    <p class="card-text">&#8377; <%= listing.price.toLocaleString("en-IN") %>
-                    </p>
-                    <p class="card-text">
-                        <%= listing.location %>
-                    </p>
-                    <p class="card-text">
-                        <%= listing.country %>
-                    </p>
-                </div>
-            </div>
-            <% if(currUser && currUser._id.equals(listing.owner._id)){ %>
-                <div class="btns">
-                    <a class="btn btn-dark col-1 offset-3 edit-btn mb-5"
-                        href="/listings/<%= listing._id %>/edit">Edit</a>
-                    <form method="post" action="/listings/<%= listing._id %>?_method=DELETE">
-                        <button class="btn btn-dark  offset-5 mb-5">Delete</button>
-                    </form>
-                </div>
-                <% } %>
+<div class="wl-show-container">
+
+  <!-- Back link -->
+  <a href="/listings" class="wl-back-link">
+    <i class="fa-solid fa-arrow-left"></i>
+    Back to listings
+  </a>
+
+  <!-- Header -->
+  <div class="wl-show-header">
+    <h1 class="wl-show-title"><%= listing.title %></h1>
+    <div class="wl-show-location">
+      <i class="fa-solid fa-location-dot"></i>
+      <%= listing.location %><% if(listing.country){ %>, <%= listing.country %><% } %>
+    </div>
+  </div>
+
+  <!-- Hero image -->
+  <div class="wl-show-image-wrapper">
+    <img
+      src="<%= listing.image && listing.image.url ? listing.image.url : 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200' %>"
+      class="wl-show-image"
+      alt="<%= listing.title %>"
+    >
+  </div>
+
+  <!-- Details grid -->
+  <div class="wl-show-details">
+
+    <!-- Left: info -->
+    <div class="wl-show-info">
+
+      <!-- Host -->
+      <div class="wl-show-host">
+        <div class="wl-show-host-avatar">
+          <%= listing.owner && listing.owner.username ? listing.owner.username[0].toUpperCase() : 'H' %>
         </div>
-        <!--  review implementation -->
-        <!--  step1->review form -->
+        <div class="wl-show-host-info">
+          <h4>Hosted by <%= listing.owner ? listing.owner.username : 'Host' %></h4>
+          <p>WanderLust host</p>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <% if(listing.description){ %>
+        <div class="wl-show-description">
+          <%= listing.description %>
+        </div>
+      <% } %>
+
+      <!-- Quick details chips -->
+      <h3 class="wl-show-section-title">Property details</h3>
+      <div style="display:flex; flex-wrap:wrap; gap:0.75rem; margin-bottom:var(--space-lg);">
+        <div style="display:flex; align-items:center; gap:0.5rem; background:var(--color-surface-alt); border-radius:var(--radius-md); padding:0.5rem 1rem; font-size:var(--font-size-sm); color:var(--color-text-secondary);">
+          <i class="fa-solid fa-location-dot" style="color:var(--color-accent);"></i>
+          <%= listing.location %>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.5rem; background:var(--color-surface-alt); border-radius:var(--radius-md); padding:0.5rem 1rem; font-size:var(--font-size-sm); color:var(--color-text-secondary);">
+          <i class="fa-solid fa-earth-asia" style="color:var(--color-accent);"></i>
+          <%= listing.country %>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.5rem; background:var(--color-surface-alt); border-radius:var(--radius-md); padding:0.5rem 1rem; font-size:var(--font-size-sm); color:var(--color-text-secondary);">
+          <i class="fa-solid fa-indian-rupee-sign" style="color:var(--color-accent);"></i>
+          &#8377;<%= listing.price ? listing.price.toLocaleString("en-IN") : "—" %> / night
+        </div>
+      </div>
+
+      <hr class="wl-section-divider">
+
+      <!-- ===== Reviews Section ===== -->
+      <div class="wl-reviews-section">
+
+        <!-- Review form (logged-in users only) -->
         <% if(currUser){ %>
-            <div class="col-8 offset-3 mb-3">
-                <hr>
-                <h4>Leave Review</h4>
-                <form action="/listings/<%= listing._id  %>/reviews" method="POST" novalidate class="needs-validation">
-                    <div class="mb-3 mt-3">
-                    <fieldset class="starability-slot">
-                        <h4>Drop Rating</h4>
-                        <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
-                            aria-label="No rating." />
-                        <input type="radio" id="first-rate1" name="review[rating]" value="1" />
-                        <label for="first-rate1" title="Terrible">1 star</label>
-                        <input type="radio" id="first-rate2" name="review[rating]"  value="2" />
-                        <label for="first-rate2" title="Not good">2 stars</label>
-                        <input type="radio" id="first-rate3" name="review[rating]"  value="3" />
-                        <label for="first-rate3" title="Average">3 stars</label>
-                        <input type="radio" id="first-rate4" name="review[rating]"  value="4" />
-                        <label for="first-rate4" title="Very good">4 stars</label>
-                        <input type="radio" id="first-rate5" name="review[rating]"  value="5" />
-                        <label for="first-rate5" title="Amazing">5 stars</label>
-                    </fieldset>
-                    </div>
+          <div class="wl-review-form">
+            <h4><i class="fa-regular fa-star" style="color:var(--color-star); margin-right:0.5rem;"></i>Leave a Review</h4>
+            <form action="/listings/<%= listing._id %>/reviews" method="POST" novalidate class="needs-validation">
 
-                    <div class="mb-3 mt-3">
-                        <label for="comment" class="form-label">Comment</label>
-                        <textarea row="10" col="30" name="review[comment]" id="comment" class="form-control"
-                            required></textarea>
-                        <div class="invalid-feedback">Please Add a Comment for review</div>
-                    </div>
-                    <button class="btn btn-outline-dark">Sumbit</button>
-                </form>
-            </div>
-            <% } %>
-                <!--  step2->show reviews -->
-                <!-- Show Reviews -->
-                <div class="col-8 offset-3 mb-3">
-                    <hr>
-                    <p><b>All Reviews</b></p>
+              <div class="wl-form-group">
+                <label class="wl-form-label">Your Rating</label>
+                <fieldset class="starability-slot" aria-label="Rating">
+                  <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+                  <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                  <label for="first-rate1" title="Terrible">1 star</label>
+                  <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                  <label for="first-rate2" title="Not good">2 stars</label>
+                  <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                  <label for="first-rate3" title="Average">3 stars</label>
+                  <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                  <label for="first-rate4" title="Very good">4 stars</label>
+                  <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                  <label for="first-rate5" title="Amazing">5 stars</label>
+                </fieldset>
+              </div>
 
-                    <div class="row">
-                        <% for(let review of listing.reviews){ %>
+              <div class="wl-form-group">
+                <label for="comment" class="wl-form-label">Comment</label>
+                <textarea
+                  name="review[comment]"
+                  id="comment"
+                  class="wl-form-input"
+                  rows="4"
+                  placeholder="Share what you loved about this place…"
+                  required
+                ></textarea>
+                <div class="invalid-feedback">Please add a comment before submitting.</div>
+              </div>
 
-                            <div class="col-md-6 mb-3">
-                                <div class="cardv ">
-                                    <div class="card-body ">
+              <button class="wl-btn wl-btn-primary" type="submit">
+                <i class="fa-regular fa-paper-plane"></i>
+                Submit Review
+              </button>
+            </form>
+          </div>
+        <% } else { %>
+          <div style="background:var(--color-surface); border:var(--border); border-radius:var(--radius-lg); padding:var(--space-xl); text-align:center; margin-bottom:var(--space-xl);">
+            <p style="color:var(--color-text-secondary); margin-bottom:var(--space-md);">
+              <a href="/login" style="color:var(--color-accent); font-weight:var(--font-weight-semibold);">Log in</a> to leave a review for this property.
+            </p>
+          </div>
+        <% } %>
 
-                                        <h5 class="card-title ml-3">
-                                            @<%= review.author.username %>
-                                        </h5>
-
-                                        <p class="starability-result card-text" data-rating="<%= review.rating %>">
-                                            Rated: 3 stars
-                                        </p>
-
-                                        <p class="card-text">
-                                            <%= review.comment %>
-                                        </p>
-
-
-                                        <% if(currUser && review.author && currUser._id.equals(review.author._id)){ %>
-
-                                            <form method="POST"
-                                                action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
-
-                                                <button class="btn btn-sm btn-dark">
-                                                    Delete
-                                                </button>
-
-                                            </form>
-
-                                            <% } %>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <% } %>
-                    </div>
+        <!-- All reviews -->
+        <% if(listing.reviews && listing.reviews.length > 0){ %>
+          <h3 class="wl-show-section-title">
+            <i class="fa-solid fa-star" style="color:var(--color-star); margin-right:0.375rem; font-size:1rem;"></i>
+            <%= listing.reviews.length %> <%= listing.reviews.length === 1 ? 'Review' : 'Reviews' %>
+          </h3>
+          <div class="wl-reviews-list">
+            <% for(let review of listing.reviews){ %>
+              <div class="wl-review-card">
+                <div class="wl-review-header">
+                  <div class="wl-review-avatar">
+                    <%= review.author && review.author.username ? review.author.username[0].toUpperCase() : 'U' %>
+                  </div>
+                  <div>
+                    <div class="wl-review-author">@<%= review.author ? review.author.username : 'User' %></div>
+                    <p class="starability-result" data-rating="<%= review.rating %>" style="margin:0;">Rated: <%= review.rating %> stars</p>
+                  </div>
                 </div>
+                <p class="wl-review-comment"><%= review.comment %></p>
+
+                <% if(currUser && review.author && currUser._id.equals(review.author._id)){ %>
+                  <div class="wl-review-footer">
+                    <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+                      <button class="wl-btn wl-btn-danger wl-btn-sm" type="submit">
+                        <i class="fa-regular fa-trash-can"></i>
+                        Delete
+                      </button>
+                    </form>
+                  </div>
+                <% } %>
+              </div>
+            <% } %>
+          </div>
+        <% } else { %>
+          <p style="color:var(--color-text-muted); font-size:var(--font-size-sm);">No reviews yet — be the first to share your experience!</p>
+        <% } %>
+      </div>
+    </div>
+
+    <!-- Right: Price + Owner actions card -->
+    <aside>
+      <div class="wl-price-card">
+        <div class="wl-price-amount">
+          &#8377;<%= listing.price ? listing.price.toLocaleString("en-IN") : "—" %>
+          <span>/ night</span>
+        </div>
+        <div class="wl-price-location">
+          <i class="fa-solid fa-location-dot"></i>
+          <%= listing.location %><% if(listing.country){ %>, <%= listing.country %><% } %>
+        </div>
+
+        <div style="background:var(--color-surface-alt); border-radius:var(--radius-md); padding:var(--space-md); margin-bottom:var(--space-md); font-size:var(--font-size-sm); color:var(--color-text-secondary); text-align:center;">
+          <i class="fa-regular fa-calendar" style="margin-right:0.375rem;"></i>
+          Contact the host to check availability
+        </div>
+
+        <div style="font-size:var(--font-size-xs); color:var(--color-text-muted); text-align:center;">
+          Hosted by <strong style="color:var(--color-text-secondary);"><%= listing.owner ? listing.owner.username : 'Host' %></strong>
+        </div>
+
+        <!-- Owner controls -->
+        <% if(currUser && currUser._id.equals(listing.owner._id)){ %>
+          <div class="wl-owner-controls">
+            <a href="/listings/<%= listing._id %>/edit" class="wl-btn wl-btn-outline wl-btn-sm">
+              <i class="fa-regular fa-pen-to-square"></i>
+              Edit
+            </a>
+            <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE" style="flex:1; display:flex;">
+              <button class="wl-btn wl-btn-danger wl-btn-sm" type="submit" style="width:100%; justify-content:center;">
+                <i class="fa-regular fa-trash-can"></i>
+                Delete
+              </button>
+            </form>
+          </div>
+        <% } %>
+      </div>
+    </aside>
+
+  </div><!-- end .wl-show-details -->
+</div>

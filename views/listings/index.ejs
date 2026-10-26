@@ -1,127 +1,152 @@
 <%- layout("/layouts/boilerplate") %>
-    <!-- <h3>All Listing</h3> -->
-    <!-- <form method="get" action="/listings/new">
-        <button>Create New Listing</button>
-    </form> -->
-    <style>
-        #filters {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-        }
 
-        .filter {
-            text-align: center;
-            margin-right: 2rem;
-            margin-top: 2rem;
-            opacity: 0.7;
-        }
+<!-- ===== Hero Section ===== -->
+<section class="wl-hero">
+  <h1 class="wl-hero-title">Find your next unforgettable stay</h1>
+  <p class="wl-hero-subtitle">Discover unique homes, cabins, beachside villas, and more — all around the world.</p>
 
-        .filter:hover {
-            opacity: 1;
-            cursor: pointer;
-        }
+  <!-- Hero search bar -->
+  <form class="wl-hero-search" role="search" method="get" action="/listings">
+    <i class="fa-solid fa-magnifying-glass" style="color:var(--color-text-muted); flex-shrink:0;"></i>
+    <input type="search" name="q" placeholder="Search by destination, city, or country…" aria-label="Search listings" autocomplete="off">
+    <button class="wl-hero-search-btn" type="submit">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      Search
+    </button>
+  </form>
+</section>
 
-        .filter p {
-            font-size: 0.8rem;
-        }
+<!-- ===== Category Filters ===== -->
+<div class="wl-filters" role="navigation" aria-label="Property categories">
+  <button class="wl-filter-item active" type="button" data-filter="all">
+    <span class="wl-filter-icon"><i class="fa-solid fa-fire"></i></span>
+    <span class="wl-filter-label">Trending</span>
+  </button>
+  <button class="wl-filter-item" type="button" data-filter="rooms">
+    <span class="wl-filter-icon"><i class="fa-solid fa-bed"></i></span>
+    <span class="wl-filter-label">Rooms</span>
+  </button>
+  <button class="wl-filter-item" type="button" data-filter="cities">
+    <span class="wl-filter-icon"><i class="fa-solid fa-mountain-city"></i></span>
+    <span class="wl-filter-label">Iconic Cities</span>
+  </button>
+  <button class="wl-filter-item" type="button" data-filter="mountains">
+    <span class="wl-filter-icon"><i class="fa-solid fa-mountain"></i></span>
+    <span class="wl-filter-label">Mountains</span>
+  </button>
+  <button class="wl-filter-item" type="button" data-filter="castles">
+    <span class="wl-filter-icon"><i class="fa-solid fa-chess-rook"></i></span>
+    <span class="wl-filter-label">Castles</span>
+  </button>
+  <button class="wl-filter-item" type="button" data-filter="pools">
+    <span class="wl-filter-icon"><i class="fa-solid fa-person-swimming"></i></span>
+    <span class="wl-filter-label">Amazing Pools</span>
+  </button>
+  <button class="wl-filter-item" type="button" data-filter="camping">
+    <span class="wl-filter-icon"><i class="fa-solid fa-campground"></i></span>
+    <span class="wl-filter-label">Camping</span>
+  </button>
+  <button class="wl-filter-item" type="button" data-filter="farms">
+    <span class="wl-filter-icon"><i class="fa-solid fa-cow"></i></span>
+    <span class="wl-filter-label">Farms</span>
+  </button>
+  <button class="wl-filter-item" type="button" data-filter="beach">
+    <span class="wl-filter-icon"><i class="fa-solid fa-umbrella-beach"></i></span>
+    <span class="wl-filter-label">Beach</span>
+  </button>
+  <button class="wl-filter-item" type="button" data-filter="arctic">
+    <span class="wl-filter-icon"><i class="fa-solid fa-snowflake"></i></span>
+    <span class="wl-filter-label">Arctic</span>
+  </button>
 
-        .tax-info{
-           display:none;
-        }
-        .tax-toggle{
-            border:1px solid black;
-            border-radius: 1rem;
-            height:3.25rem;
-            padding: 1rem;
-            display: flex;
-            align-items: center;
-            margin-left: 1rem;
-        }
-    </style>
-    <div id="filters">
-        <div class="filter">
-            <div><i class="fa-solid fa-fire"></i></div>
-            <p>Trending</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-bed"></i></div>
-            <p>Rooms</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-mountain-city"></i></div>
-            <p>Iconic Cities</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-mountain"></i></div>
-            <p>Mountains</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-mountain"></i></div>
-            <p>Castles</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-person-swimming"></i></div>
-            <p>Amazing Pools</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-campground"></i></div>
-            <p>Camping</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-cow"></i></div>
-            <p>Farms</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-umbrella-beach"></i></div>
-            <p>Beach</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-helmet-safety"></i></div>
-            <p>Workation Spaces</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-snowflake"></i></div>
-            <p>Arctic</p>
-        </div>
-
-        <div class="tax-toggle">
-            <div class="form-check-reverse form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
-                <label class="form-check-label" for="switchCheckDefault">Display Total after Taxes</label>
-            </div>
-        </div>
+  <!-- Tax toggle -->
+  <div class="wl-tax-toggle ms-auto">
+    <div class="form-check form-switch mb-0 d-flex align-items-center gap-2">
+      <input class="form-check-input" type="checkbox" role="switch" id="taxSwitch" style="cursor:pointer;">
+      <label class="form-check-label" for="taxSwitch" style="cursor:pointer; white-space:nowrap;">Show total with taxes</label>
     </div>
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
-        <% for(let listing of allListing){ %>
-            <a href="/listings/<%= listing._id %>" class="listing-links">
-                <div class="card col listing-card">
-                    <img src="<%= listing.image.url %>" class="card-img-top" alt="Listing_img" style="height:20rem">
-                    <div class="card-img-overlay"></div>
-                    <div class="card-body">
-                        <h5 class="card-title"><b>
-                                <%= listing.title %>
-                            </b></h5>
-                        <p class="card-text">
-                            <%= listing.title %> <br>
-                                &#8377;<%= listing.price.toLocaleString("en-IN") %>/night
-                                <i class="tax-info">&nbsp; &nbsp; +20% GST</i>
-                        </p>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                    </div>
-                </div>
-            </a>
-            <% } %>
-    </div>
+  </div>
+</div>
 
-    <script>
-        const textSwitch = document.getElementById("switchCheckDefault");
+<!-- ===== Create listing CTA (for logged-in users) ===== -->
+<% if(currUser){ %>
+<div class="wl-create-cta">
+  <h3 style="font-size:var(--font-size-base); font-weight:var(--font-weight-semibold); color:var(--color-text-secondary); margin:0;">
+    Have a place to share?
+  </h3>
+  <a href="/listings/new" class="wl-btn wl-btn-primary wl-btn-sm">
+    <i class="fa-solid fa-plus"></i>
+    Create listing
+  </a>
+</div>
+<% } %>
 
-        textSwitch.addEventListener("click", () => {
-           let taxInfo=document.getElementsByClassName("tax-info");
-           for(info of taxInfo)
-           {
-               info.style.display = textSwitch.checked ? "inline" : "none";
-           }
-        });
-    </script>
+<!-- ===== Listings Grid ===== -->
+<% if(allListing && allListing.length > 0){ %>
+  <div class="wl-listings-grid">
+    <% for(let listing of allListing){ %>
+      <a href="/listings/<%= listing._id %>" class="wl-card" aria-label="<%= listing.title %>">
+        <!-- Image -->
+        <div class="wl-card-img-wrapper">
+          <img
+            src="<%= listing.image && listing.image.url ? listing.image.url : 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600' %>"
+            class="wl-card-img"
+            alt="<%= listing.title %>"
+            loading="lazy"
+          >
+          <!-- Wishlist heart (visual only) -->
+          <button class="wl-card-wishlist" type="button" aria-label="Save to wishlist" onclick="event.preventDefault(); this.classList.toggle('saved'); this.querySelector('i').classList.toggle('fa-regular'); this.querySelector('i').classList.toggle('fa-solid');">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+        </div>
+
+        <!-- Card body -->
+        <div class="wl-card-body">
+          <div class="wl-card-title"><%= listing.title %></div>
+          <div class="wl-card-location">
+            <i class="fa-solid fa-location-dot"></i>
+            <%= listing.location %><% if(listing.country){ %>, <%= listing.country %><% } %>
+          </div>
+          <div class="wl-card-price">
+            &#8377;<%= listing.price ? listing.price.toLocaleString("en-IN") : "—" %>
+            <span>/ night</span>
+            <i class="tax-info">&nbsp;+20% GST</i>
+          </div>
+        </div>
+      </a>
+    <% } %>
+  </div>
+<% } else { %>
+  <!-- Empty state -->
+  <div class="wl-empty-state">
+    <i class="fa-regular fa-compass"></i>
+    <h3>No listings yet</h3>
+    <p>Be the first to list your property and welcome guests from around the world.</p>
+    <% if(currUser){ %>
+      <a href="/listings/new" class="wl-btn wl-btn-primary mt-3">
+        <i class="fa-solid fa-plus"></i>
+        Create first listing
+      </a>
+    <% } else { %>
+      <a href="/login" class="wl-btn wl-btn-primary mt-3">Log in to create a listing</a>
+    <% } %>
+  </div>
+<% } %>
+
+<script>
+  // Tax toggle
+  const taxSwitch = document.getElementById("taxSwitch");
+  taxSwitch.addEventListener("change", () => {
+    document.querySelectorAll(".tax-info").forEach(el => {
+      el.style.display = taxSwitch.checked ? "inline" : "none";
+    });
+  });
+
+  // Filter active state (visual only — no backend filter)
+  document.querySelectorAll(".wl-filter-item").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".wl-filter-item").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
+</script>

@@ -1,5 +1,13 @@
-<% layout("/layouts/boilerplate") %>
+<%- layout("/layouts/boilerplate") %>
 
-<div class="alert alert-danger mt-3" role="alert">
-     <h4 class="alert-heading"><%= err.message %></h4>
+<div class="wl-error-container">
+  <div class="wl-error-icon">
+    <i class="fa-regular fa-face-frown-open"></i>
+  </div>
+  <h1 class="wl-error-title">Something went wrong</h1>
+  <p class="wl-error-message"><%= err.message %></p>
+  <a href="/listings" class="wl-btn wl-btn-primary">
+    <i class="fa-solid fa-house"></i>
+    Back to Home
+  </a>
 </div>
