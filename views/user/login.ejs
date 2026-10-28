@@ -1,80 +1,80 @@
 <%- layout("/layouts/boilerplate") %>
-
-<div class="wl-form-container">
-  <div class="wl-form-card">
-    <div class="wl-form-header">
-      <!-- Icon -->
-      <div style="width:56px; height:56px; border-radius:50%; background:var(--color-accent-light); display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-md);">
-        <i class="fa-regular fa-compass" style="color:var(--color-accent); font-size:1.5rem;"></i>
+<div class="wl-auth-shell">
+  <aside class="wl-auth-story">
+    <p class="wl-eyebrow">A LITTLE FURTHER FROM ORDINARY</p>
+    <h2>
+      Good places.<br />Great memories.<br />
+      <em>Your next story.</em>
+    </h2>
+    <p>Find a corner of the world that feels like you.</p>
+    <img
+      src="/images/escape-illustration.svg"
+      width="1000"
+      height="1100"
+      alt="Illustrated coastal retreat with mountains and a winding path"
+    />
+  </aside>
+  <section class="wl-auth-form-panel" aria-labelledby="auth-title">
+    <a href="/listings" class="wl-back-link">
+      <%- include("../includes/icon", { name: "back" }) %> Back to exploring</a
+    >
+    <div class="wl-form-card">
+      <div class="wl-form-header">
+        <span class="wl-form-symbol">
+          <%- include("../includes/icon", { name: "compass" }) %>
+        </span>
+        <p class="wl-eyebrow">YOUR NEXT ADVENTURE AWAITS</p>
+        <h1 id="auth-title">Welcome back.</h1>
+        <p>Log in to pick up where your journey left off.</p>
       </div>
-      <h2>Welcome back</h2>
-      <p>Log in to continue your journey.</p>
-    </div>
-
-    <form action="/login" method="POST" class="needs-validation" novalidate>
-
-      <div class="wl-form-group">
-        <label for="username" class="wl-form-label">Username</label>
-        <input
-          name="username"
-          type="text"
-          class="wl-form-input"
-          id="username"
-          placeholder="Enter your username"
-          autocomplete="username"
-          required
-        >
-        <div class="invalid-feedback">Please enter your username.</div>
-      </div>
-
-      <div class="wl-form-group">
-        <label for="password" class="wl-form-label">Password</label>
-        <div style="position:relative;">
+      <form action="/login" method="POST" class="needs-validation" novalidate>
+        <div class="wl-form-group">
+          <label for="username" class="wl-form-label">Username</label>
           <input
-            name="password"
-            type="password"
+            name="username"
+            type="text"
             class="wl-form-input"
-            id="password"
-            placeholder="Enter your password"
-            autocomplete="current-password"
+            id="username"
+            placeholder="Enter your username"
+            autocomplete="username"
             required
-            style="padding-right:3rem;"
-          >
-          <button
-            type="button"
-            id="togglePwd"
-            aria-label="Toggle password visibility"
-            style="position:absolute; right:1rem; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; color:var(--color-text-muted); font-size:0.9rem;"
-          >
-            <i class="fa-regular fa-eye" id="togglePwdIcon"></i>
+          />
+          <div class="invalid-feedback">Please enter your username.</div>
+        </div>
+        <div class="wl-form-group">
+          <label for="password" class="wl-form-label">Password</label>
+          <div class="wl-input-wrap">
+            <input
+              name="password"
+              type="password"
+              class="wl-form-input"
+              id="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required
+            />
+            <button
+              type="button"
+              id="togglePwd"
+              class="wl-password-toggle"
+              data-toggle-password="password"
+              aria-label="Show password"
+              aria-pressed="false"
+            >
+              <%- include("../includes/icon", { name: "eye" }) %>
+            </button>
+            <div class="invalid-feedback">Please enter your password.</div>
+          </div>
+        </div>
+        <div class="wl-form-footer">
+          <button class="wl-btn wl-btn-primary wl-btn-lg" type="submit">
+            Log In <%- include("../includes/icon", { name: "arrow" }) %>
           </button>
         </div>
-        <div class="invalid-feedback">Please enter your password.</div>
-      </div>
-
-      <div class="wl-form-footer">
-        <button class="wl-btn wl-btn-primary wl-btn-lg" type="submit">
-          <i class="fa-solid fa-right-to-bracket"></i>
-          Log In
-        </button>
-      </div>
-    </form>
-
-    <div class="wl-form-alt">
-      Don't have an account? <a href="/singUp">Sign up</a>
+      </form>
+      <p class="wl-form-alt">
+        New around here? <a href="/singUp">Create an account</a>
+      </p>
     </div>
-  </div>
+  </section>
 </div>
-
-<script>
-  const toggleBtn = document.getElementById("togglePwd");
-  const pwdInput = document.getElementById("password");
-  const toggleIcon = document.getElementById("togglePwdIcon");
-  if(toggleBtn) {
-    toggleBtn.addEventListener("click", () => {
-      const isPassword = pwdInput.type === "password";
-      pwdInput.type = isPassword ? "text" : "password";
-      toggleIcon.className = isPassword ? "fa-regular fa-eye-slash" : "fa-regular fa-eye";
-    });
-  }
-</script>

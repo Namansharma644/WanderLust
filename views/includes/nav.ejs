@@ -1,56 +1,83 @@
-<nav class="wl-navbar navbar navbar-expand-lg">
+<% const navSearch = typeof filters !== 'undefined' ? filters : { q: '', sort: 'default' }; %>
+<nav class="wl-navbar navbar navbar-expand-lg" aria-label="Main navigation">
   <div class="container-fluid">
-
-    <!-- Brand -->
-    <a class="wl-brand navbar-brand" href="/listings">
-      <i class="fa-regular fa-compass"></i>
-      <span>WanderLust</span>
+    <a
+      class="wl-brand navbar-brand"
+      href="/listings"
+      aria-label="WanderLust home"
+    >
+      <span class="wl-brand-mark">
+        <%- include("icon", { name: "compass" }) %>
+      </span>
+      <span>WanderLust<span class="wl-brand-dot">.</span> </span>
     </a>
-
-    <!-- Mobile Toggle -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#wlNavbar"
-      aria-controls="wlNavbar" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#wlNavbar"
+      aria-controls="wlNavbar"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <%- include("icon", { name: "menu" }) %>
     </button>
-
     <div class="collapse navbar-collapse" id="wlNavbar">
-
-      <!-- Centre search -->
-      <div class="mx-auto my-2 my-lg-0">
-        <form class="wl-nav-search" role="search" method="get" action="/listings">
-          <i class="fa-solid fa-magnifying-glass" style="color:var(--color-text-muted); font-size:0.85rem; flex-shrink:0;"></i>
-          <input type="search" name="q" placeholder="Search destinations…" aria-label="Search destinations" autocomplete="off">
+      <div class="wl-nav-search-wrap mx-auto">
+        <form
+          class="wl-nav-search"
+          role="search"
+          method="get"
+          action="/listings"
+        >
+          <input
+            type="search"
+            name="q"
+            value="<%= navSearch.q %>"
+            maxlength="100"
+            placeholder="Where to next?"
+            aria-label="Search destinations"
+            autocomplete="off"
+          />
+          <% if(navSearch.minPrice !== undefined){ %>
+          <input
+            type="hidden"
+            name="minPrice"
+            value="<%= navSearch.minPrice %>"
+          />
+          <% } %> <% if(navSearch.maxPrice !== undefined){ %>
+          <input
+            type="hidden"
+            name="maxPrice"
+            value="<%= navSearch.maxPrice %>"
+          />
+          <% } %> <% if(navSearch.sort !== 'default'){ %>
+          <input type="hidden" name="sort" value="<%= navSearch.sort %>" />
+          <% } %>
           <button class="wl-nav-search-btn" type="submit" aria-label="Search">
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <%- include("icon", { name: "search" }) %>
           </button>
         </form>
       </div>
-
-      <!-- Right-side links -->
-      <div class="wl-nav-links wl-nav-auth ms-lg-3">
-        <a class="nav-link" href="/listings">Explore</a>
-
+      <div class="wl-nav-links wl-nav-auth">
+        <a class="nav-link" href="/listings">Explore stays</a>
+        <a class="nav-link wl-saved-nav" href="/listings/saved" aria-label="Saved stays on this device">Saved <span class="wl-saved-count" data-saved-count hidden>0</span></a>
+        <a class="nav-link" href="/listings/new">Become a host</a>
         <% if(currUser){ %>
-          <a class="nav-link" href="/listings/new">List your property</a>
-          <a class="wl-nav-btn wl-nav-btn-outline ms-1" href="/logout">
-            <i class="fa-solid fa-right-from-bracket"></i>
-            Log out
-          </a>
-          <div class="wl-nav-user ms-1">
-            <div class="wl-nav-user-avatar">
-              <%= currUser.username ? currUser.username[0].toUpperCase() : 'U' %>
-            </div>
-            <span style="font-size:var(--font-size-sm); font-weight:var(--font-weight-medium); color:var(--color-text-primary);">
-              <%= currUser.username %>
-            </span>
-          </div>
+        <span class="wl-nav-user">
+          <span class="wl-nav-user-avatar" aria-hidden="true">
+            <%= currUser.username ? currUser.username[0].toUpperCase() : 'U' %>
+          </span>
+          <span class="wl-nav-username"> <%= currUser.username %> </span>
+        </span>
+        <a class="wl-nav-btn wl-nav-btn-outline" href="/logout">Log out</a>
         <% } else { %>
-          <a class="nav-link" href="/listings/new">List your property</a>
-          <a class="wl-nav-btn wl-nav-btn-outline ms-1" href="/singUp">Sign up</a>
-          <a class="wl-nav-btn wl-nav-btn-primary ms-1" href="/login">Log in</a>
+        <a class="nav-link" href="/login">Log in</a>
+        <a class="wl-nav-btn wl-nav-btn-primary" href="/singUp"
+          >Sign up <%- include("icon", { name: "arrow" }) %>
+        </a>
         <% } %>
       </div>
-
     </div>
   </div>
 </nav>

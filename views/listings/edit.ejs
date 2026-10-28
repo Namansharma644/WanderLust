@@ -2,17 +2,18 @@
 
 <div class="wl-listing-form-container">
   <a href="/listings/<%= listing._id %>" class="wl-back-link">
-    <i class="fa-solid fa-arrow-left"></i>
-    Back to listing
+    <%- include("../includes/icon", { name: "back" }) %> Back to listing
   </a>
 
   <div class="wl-form-card">
-    <div class="wl-form-header">
-      <div style="width:52px; height:52px; border-radius:50%; background:var(--color-accent-light); display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-md);">
-        <i class="fa-regular fa-pen-to-square" style="color:var(--color-accent); font-size:1.25rem;"></i>
-      </div>
-      <h2>Edit Listing</h2>
-      <p>Update your property details below.</p>
+    <div class="wl-form-header wl-listing-form-header">
+      <p class="wl-eyebrow">A LITTLE ATTENTION TO DETAIL</p>
+      <h1>Edit Listing</h1>
+      <p>
+        Keep your space looking its best. Update the details travellers need for
+        their next getaway.
+      </p>
+      <span class="wl-form-required-note">Fields marked * are required.</span>
     </div>
 
     <form
@@ -22,9 +23,10 @@
       class="needs-validation"
       enctype="multipart/form-data"
     >
-
       <div class="wl-form-group">
-        <label for="title" class="wl-form-label">Property Title <span style="color:var(--color-accent);">*</span></label>
+        <label for="title" class="wl-form-label"
+          >Property Title <span style="color: var(--color-accent)">*</span>
+        </label>
         <input
           name="listing[title]"
           type="text"
@@ -32,46 +34,80 @@
           id="title"
           value="<%= listing.title %>"
           required
-        >
+        />
         <div class="valid-feedback">Looks good!</div>
         <div class="invalid-feedback">Please enter a valid title.</div>
       </div>
 
       <div class="wl-form-group">
-        <label for="description" class="wl-form-label">Description</label>
+        <label for="description" class="wl-form-label"
+          >Description <span aria-hidden="true">*</span>
+        </label>
         <textarea
           name="listing[description]"
           class="wl-form-input"
           id="description"
           rows="5"
           required
-        ><%= listing.description %></textarea>
+        >
+<%= listing.description %>
+</textarea
+        >
         <div class="invalid-feedback">Please add a short description.</div>
       </div>
 
       <!-- Current image preview -->
       <div class="wl-form-group">
-        <label class="wl-form-label">Current Photo</label>
+        <p class="wl-form-label">Current Photo</p>
         <div>
           <img
             class="wl-form-image-preview"
             src="<%= originalImgUrl %>"
-            alt="Current listing image"
-          >
+            alt="Current photo of <%= listing.title %>"
+            data-listing-photo
+          />
         </div>
       </div>
 
       <div class="wl-form-group">
-        <label for="image" class="wl-form-label">Replace Photo <span style="font-size:var(--font-size-xs); color:var(--color-text-muted); font-weight:400;">(optional)</span></label>
-        <input name="listing[image][url]" type="file" class="wl-form-input" id="image" accept="image/*">
-        <div style="font-size:var(--font-size-xs); color:var(--color-text-muted); margin-top:0.375rem;">
+        <label for="image" class="wl-form-label"
+          >Replace Photo
+          <span
+            style="
+              font-size: var(--font-size-xs);
+              color: var(--color-text-muted);
+              font-weight: 400;
+            "
+            >(optional)</span
+          >
+        </label>
+        <input
+          name="listing[image][url]"
+          type="file"
+          class="wl-form-input"
+          id="image"
+          accept="image/*"
+          aria-describedby="image-help"
+        />
+        <div class="wl-form-hint" id="image-help">
           Leave blank to keep the current photo.
         </div>
       </div>
 
+      <div class="wl-selected-photo" hidden>
+        <img
+          id="selected-photo"
+          alt="Preview of your selected property photo"
+        />
+        <p class="wl-form-hint">Selected photo preview</p>
+      </div>
+
       <div class="wl-form-row">
-        <div class="wl-form-group" style="margin-bottom:0;">
-          <label for="price" class="wl-form-label">Price per night (&#8377;) <span style="color:var(--color-accent);">*</span></label>
+        <div class="wl-form-group" style="margin-bottom: 0">
+          <label for="price" class="wl-form-label"
+            >Price per night (&#8377;)
+            <span style="color: var(--color-accent)">*</span>
+          </label>
           <input
             name="listing[price]"
             type="number"
@@ -80,12 +116,14 @@
             value="<%= listing.price %>"
             min="1"
             required
-          >
+          />
           <div class="invalid-feedback">Please enter a valid price.</div>
         </div>
 
-        <div class="wl-form-group" style="margin-bottom:0;">
-          <label for="country" class="wl-form-label">Country <span style="color:var(--color-accent);">*</span></label>
+        <div class="wl-form-group" style="margin-bottom: 0">
+          <label for="country" class="wl-form-label"
+            >Country <span style="color: var(--color-accent)">*</span>
+          </label>
           <input
             name="listing[country]"
             type="text"
@@ -93,13 +131,15 @@
             id="country"
             value="<%= listing.country %>"
             required
-          >
+          />
           <div class="invalid-feedback">Please enter a valid country.</div>
         </div>
       </div>
 
-      <div class="wl-form-group" style="margin-top:var(--space-lg);">
-        <label for="location" class="wl-form-label">Location / City <span style="color:var(--color-accent);">*</span></label>
+      <div class="wl-form-group" style="margin-top: var(--space-lg)">
+        <label for="location" class="wl-form-label"
+          >Location / City <span style="color: var(--color-accent)">*</span>
+        </label>
         <input
           name="listing[location]"
           type="text"
@@ -107,14 +147,14 @@
           id="location"
           value="<%= listing.location %>"
           required
-        >
+        />
         <div class="invalid-feedback">Please enter a valid location.</div>
       </div>
 
       <div class="wl-form-footer">
+        <a class="wl-form-cancel" href="/listings/<%= listing._id %>">Cancel</a>
         <button class="wl-btn wl-btn-primary wl-btn-lg" type="submit">
-          <i class="fa-regular fa-floppy-disk"></i>
-          Save Changes
+          <%- include("../includes/icon", { name: "check" }) %> Save Changes
         </button>
       </div>
     </form>

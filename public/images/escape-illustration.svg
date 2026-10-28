@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1100" viewBox="0 0 1000 1100">
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#e4edf0"/><stop offset="1" stop-color="#f8e8d0"/></linearGradient>
+    <linearGradient id="sea" x2=".7" y2="1"><stop stop-color="#89aeb0"/><stop offset="1" stop-color="#315e66"/></linearGradient>
+    <linearGradient id="hill" x2="1" y2="1"><stop stop-color="#7b8c78"/><stop offset="1" stop-color="#3c5a4c"/></linearGradient>
+    <pattern id="grain" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".6" fill="#fff" opacity=".16"/></pattern>
+  </defs>
+  <rect width="1000" height="1100" fill="url(#sky)"/>
+  <circle cx="731" cy="247" r="88" fill="#f8d5a3"/>
+  <path d="M0 500 160 295l200 263 215-170 210 210 215-135v637H0Z" fill="#a4b2a1"/>
+  <path d="M0 543 172 382l159 209 201-114 185 160 283-87v550H0Z" fill="#7c9b94"/>
+  <path d="M0 655c270-57 567-66 1000-3v448H0Z" fill="url(#sea)"/>
+  <path d="M1000 543c-121 36-178 100-208 161-46 95-199 76-286 138-49 35-56 119-132 154-60 29-163 22-231 104h857Z" fill="#dfcbb0"/>
+  <path d="M1000 534c-128 39-165 106-193 159-51 98-202 74-283 142-47 40-73 111-132 140-46 23-185 24-233 125h841Z" fill="url(#hill)"/>
+  <path d="M1000 638c-99 6-131 106-207 130-74 23-82 30-111 75-37 58-86 60-128 109" fill="none" stroke="#d7c09f" stroke-width="15"/>
+  <g fill="none" stroke="#d8e5df" stroke-width="3" opacity=".5"><path d="M97 738h152m-97 67h181m-259 95h122m180-194h95m-69 214h88"/></g>
+  <g transform="translate(723 752)"><path d="M0 0h98v77H0Z" fill="#f6ede1"/><path d="m-12 3 60-45 63 45Z" fill="#ae604a"/><path d="M40 40h23v37H40Z" fill="#856447"/><path d="M13 28h15v17H13Zm60 0h15v17H73Z" fill="#668583"/></g>
+  <g stroke="#3c5a4c" stroke-width="6" stroke-linecap="round"><path d="M707 831v-80m0 13-20-17m20 38 20-20M887 742v-76m0 13-20-20m20 42 22-19"/></g>
+  <g fill="none" stroke="#607b7e" stroke-width="3" stroke-linecap="round"><path d="M196 215q17-17 34 0 17-17 34 0M300 268q12-12 24 0 12-12 24 0"/></g>
+  <rect width="1000" height="1100" fill="url(#grain)"/>
+</svg>

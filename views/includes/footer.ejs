@@ -1,23 +1,28 @@
 <footer class="wl-footer">
   <div class="wl-footer-inner">
-    <!-- Brand -->
-    <div class="wl-footer-brand">
-      <i class="fa-regular fa-compass" style="color:var(--color-accent); margin-right:0.375rem;"></i>
-      &copy; <%= new Date().getFullYear() %> WanderLust Private Limited
+    <div>
+      <a href="/listings" class="wl-brand wl-footer-logo">
+        <span class="wl-brand-mark">
+          <%- include("icon", { name: "compass" }) %>
+        </span>
+        <span>WanderLust<span class="wl-brand-dot">.</span> </span>
+      </a>
+      <p class="wl-footer-tagline">A little further from ordinary.</p>
     </div>
-
-    <!-- Links -->
-    <div class="wl-footer-links">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Sitemap</a>
-    </div>
-
-    <!-- Socials -->
-    <div class="wl-footer-socials">
-      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-    </div>
+    <nav class="wl-footer-links" aria-label="Footer navigation">
+      <a href="/listings">Find your next stay</a>
+      <a href="/listings/new">Share your space</a>
+      <a href="<%= currUser ? '/listings' : '/singUp' %>">
+        <%= currUser ? 'Explore destinations' : 'Join WanderLust' %> <%- include("icon", { name: "arrow" }) %>
+      </a>
+    </nav>
+  </div>
+  <div class="wl-footer-bottom">
+    <span
+      >&copy;
+      <%= new Date().getFullYear() %>
+      WanderLust</span
+    >
+    <span>Made for the curious. Built for the journey.</span>
   </div>
 </footer>

@@ -26,6 +26,10 @@ router.get(
     (ListingControler.renderListing)
 );
 
+// Literal saved-stay routes must precede /:id. Saved preferences stay in the browser.
+router.get('/saved', ListingControler.savedPage);
+router.get('/saved/data', wrapAsync(ListingControler.savedData));
+
 router
 .route("/:id")
 .delete(

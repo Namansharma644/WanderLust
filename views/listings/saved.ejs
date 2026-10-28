@@ -1,0 +1,17 @@
+<%- layout('/layouts/boilerplate') %>
+<section class="wl-saved-page" aria-labelledby="saved-title" data-saved-page>
+  <a class="wl-back-link" href="/listings"><%- include('../includes/icon', { name: 'back' }) %> Back to exploring</a>
+  <header class="wl-section-heading">
+    <div><p class="wl-eyebrow">KEEP A LITTLE INSPIRATION</p><h1 id="saved-title">Saved on this device</h1><p class="wl-saved-description">Your own little collection of places to go. These saves live in this browser, not your account. Clearing browser data removes them.</p></div>
+    <p class="wl-results-count" data-saved-results></p>
+  </header>
+  <p class="wl-saved-message" data-saved-message role="status">Enable JavaScript to load stays saved in this browser.</p>
+  <button type="button" class="wl-btn wl-btn-outline wl-btn-sm" data-saved-retry hidden>Try again</button>
+  <div class="wl-listings-grid" data-saved-grid aria-busy="true"></div>
+  <div class="wl-empty-state" data-saved-empty hidden>
+    <span class="wl-state-icon"><%- include('../includes/icon', { name: 'heart' }) %></span>
+    <h2>Keep somewhere in mind.</h2><p>Tap the heart on a stay to save it here. You can keep up to 100 stays on this device.</p>
+    <a href="/listings" class="wl-btn wl-btn-primary">Find a stay to save <%- include('../includes/icon', { name: 'arrow' }) %></a>
+  </div>
+  <noscript><p>Enable JavaScript to view stays saved in this browser. <a href="/listings">Explore all stays</a>.</p></noscript>
+</section>

@@ -1,0 +1,8 @@
+<span class="wl-rating-summary">
+  <% if(summary.averageRating !== null){ %>
+    <%- include('icon', { name: 'star' }) %>
+    <span role="img" aria-label="<%= summary.averageRating.toFixed(1) %> out of 5 from <%= summary.ratingCount %> rated reviews; <%= summary.reviewCount %> reviews total"><strong><%= summary.averageRating.toFixed(1) %></strong> · <%= summary.reviewCount %> <%= summary.reviewCount === 1 ? 'review' : 'reviews' %></span>
+  <% } else { %>
+    <span><%= summary.reviewCount ? summary.reviewCount + ' reviews · Not yet rated' : 'No reviews yet' %></span>
+  <% } %>
+</span>

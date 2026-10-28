@@ -1,15 +1,34 @@
 <% if(success && success.length){ %>
-  <div class="wl-flash wl-flash-success alert-dismissible fade show" role="alert">
-    <i class="fa-solid fa-circle-check" style="flex-shrink:0;"></i>
-    <span><%= success %></span>
-    <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
+<div
+  class="wl-flash wl-flash-success alert alert-dismissible fade show"
+  role="status"
+>
+  <%- include("icon", { name: "check" }) %>
+  <span>
+    <%= success %>
+  </span>
+  <button
+    type="button"
+    class="btn-close ms-auto"
+    data-bs-dismiss="alert"
+    aria-label="Dismiss message"
+  ></button>
+</div>
 <% } %>
-
 <% if(error && error.length){ %>
-  <div class="wl-flash wl-flash-error alert-dismissible fade show" role="alert">
-    <i class="fa-solid fa-circle-exclamation" style="flex-shrink:0;"></i>
-    <span><%= error %></span>
-    <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
+<div
+  class="wl-flash wl-flash-error alert alert-dismissible fade show"
+  role="alert"
+>
+  <%- include("icon", { name: "alert" }) %>
+  <span>
+    <%= error %>
+  </span>
+  <button
+    type="button"
+    class="btn-close ms-auto"
+    data-bs-dismiss="alert"
+    aria-label="Dismiss message"
+  ></button>
+</div>
 <% } %>

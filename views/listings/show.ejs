@@ -1,204 +1,235 @@
 <%- layout("/layouts/boilerplate") %>
-
 <div class="wl-show-container">
-
-  <!-- Back link -->
   <a href="/listings" class="wl-back-link">
-    <i class="fa-solid fa-arrow-left"></i>
-    Back to listings
-  </a>
-
-  <!-- Header -->
-  <div class="wl-show-header">
+    <%- include("../includes/icon", { name: "back" }) %> Back to listings</a
+  >
+  <header class="wl-show-header">
+    <p class="wl-eyebrow">A PLACE WORTH THE JOURNEY</p>
     <h1 class="wl-show-title"><%= listing.title %></h1>
-    <div class="wl-show-location">
-      <i class="fa-solid fa-location-dot"></i>
-      <%= listing.location %><% if(listing.country){ %>, <%= listing.country %><% } %>
-    </div>
-  </div>
-
-  <!-- Hero image -->
+    <p class="wl-show-location">
+      <%- include("../includes/icon", { name: "pin" }) %> <%= listing.location %> <% if(listing.country){ %>, <%= listing.country %> <% } %>
+    </p>
+  </header>
+  <div class="wl-show-summary"><%- include('../includes/reviewSummary', { summary: reviewSummary }) %><span class="wl-detail-save"><span>Save on this device</span><%- include('../includes/saveButton', { listing }) %></span></div>
   <div class="wl-show-image-wrapper">
     <img
-      src="<%= listing.image && listing.image.url ? listing.image.url : 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200' %>"
+      src="<%= listing.image && listing.image.url ? listing.image.url : '/images/photo-unavailable.svg' %>"
       class="wl-show-image"
-      alt="<%= listing.title %>"
-    >
+      alt="<%= listing.title %> in <%= listing.location || listing.country || 'this destination' %>"
+      width="1200"
+      height="675"
+      fetchpriority="high"
+      data-listing-photo
+    />
   </div>
-
-  <!-- Details grid -->
   <div class="wl-show-details">
-
-    <!-- Left: info -->
     <div class="wl-show-info">
-
-      <!-- Host -->
       <div class="wl-show-host">
-        <div class="wl-show-host-avatar">
+        <div class="wl-show-host-avatar" aria-hidden="true">
           <%= listing.owner && listing.owner.username ? listing.owner.username[0].toUpperCase() : 'H' %>
         </div>
-        <div class="wl-show-host-info">
-          <h4>Hosted by <%= listing.owner ? listing.owner.username : 'Host' %></h4>
-          <p>WanderLust host</p>
+        <div>
+          <h2>
+            Hosted by
+            <%= listing.owner && listing.owner.username ? listing.owner.username : 'Host' %>
+          </h2>
+          <p>Your WanderLust host</p>
         </div>
       </div>
-
-      <!-- Description -->
       <% if(listing.description){ %>
-        <div class="wl-show-description">
-          <%= listing.description %>
-        </div>
+      <section class="wl-show-description" aria-labelledby="about-stay">
+        <h2 class="wl-show-section-title" id="about-stay">
+          A little about this place
+        </h2>
+        <p><%= listing.description %></p>
+      </section>
       <% } %>
-
-      <!-- Quick details chips -->
-      <h3 class="wl-show-section-title">Property details</h3>
-      <div style="display:flex; flex-wrap:wrap; gap:0.75rem; margin-bottom:var(--space-lg);">
-        <div style="display:flex; align-items:center; gap:0.5rem; background:var(--color-surface-alt); border-radius:var(--radius-md); padding:0.5rem 1rem; font-size:var(--font-size-sm); color:var(--color-text-secondary);">
-          <i class="fa-solid fa-location-dot" style="color:var(--color-accent);"></i>
-          <%= listing.location %>
-        </div>
-        <div style="display:flex; align-items:center; gap:0.5rem; background:var(--color-surface-alt); border-radius:var(--radius-md); padding:0.5rem 1rem; font-size:var(--font-size-sm); color:var(--color-text-secondary);">
-          <i class="fa-solid fa-earth-asia" style="color:var(--color-accent);"></i>
-          <%= listing.country %>
-        </div>
-        <div style="display:flex; align-items:center; gap:0.5rem; background:var(--color-surface-alt); border-radius:var(--radius-md); padding:0.5rem 1rem; font-size:var(--font-size-sm); color:var(--color-text-secondary);">
-          <i class="fa-solid fa-indian-rupee-sign" style="color:var(--color-accent);"></i>
-          &#8377;<%= listing.price ? listing.price.toLocaleString("en-IN") : "—" %> / night
-        </div>
-      </div>
-
-      <hr class="wl-section-divider">
-
-      <!-- ===== Reviews Section ===== -->
-      <div class="wl-reviews-section">
-
-        <!-- Review form (logged-in users only) -->
-        <% if(currUser){ %>
-          <div class="wl-review-form">
-            <h4><i class="fa-regular fa-star" style="color:var(--color-star); margin-right:0.5rem;"></i>Leave a Review</h4>
-            <form action="/listings/<%= listing._id %>/reviews" method="POST" novalidate class="needs-validation">
-
-              <div class="wl-form-group">
-                <label class="wl-form-label">Your Rating</label>
-                <fieldset class="starability-slot" aria-label="Rating">
-                  <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
-                  <input type="radio" id="first-rate1" name="review[rating]" value="1" />
-                  <label for="first-rate1" title="Terrible">1 star</label>
-                  <input type="radio" id="first-rate2" name="review[rating]" value="2" />
-                  <label for="first-rate2" title="Not good">2 stars</label>
-                  <input type="radio" id="first-rate3" name="review[rating]" value="3" />
-                  <label for="first-rate3" title="Average">3 stars</label>
-                  <input type="radio" id="first-rate4" name="review[rating]" value="4" />
-                  <label for="first-rate4" title="Very good">4 stars</label>
-                  <input type="radio" id="first-rate5" name="review[rating]" value="5" />
-                  <label for="first-rate5" title="Amazing">5 stars</label>
-                </fieldset>
-              </div>
-
-              <div class="wl-form-group">
-                <label for="comment" class="wl-form-label">Comment</label>
-                <textarea
-                  name="review[comment]"
-                  id="comment"
-                  class="wl-form-input"
-                  rows="4"
-                  placeholder="Share what you loved about this place…"
-                  required
-                ></textarea>
-                <div class="invalid-feedback">Please add a comment before submitting.</div>
-              </div>
-
-              <button class="wl-btn wl-btn-primary" type="submit">
-                <i class="fa-regular fa-paper-plane"></i>
-                Submit Review
-              </button>
-            </form>
+      <section aria-labelledby="property-details">
+        <h2 class="wl-show-section-title" id="property-details">
+          The essentials
+        </h2>
+        <dl class="wl-property-facts">
+          <div>
+            <dt>
+              <%- include("../includes/icon", { name: "pin" }) %>
+              Location
+            </dt>
+            <dd>
+              <%= listing.location || 'Not specified' %>
+            </dd>
           </div>
+          <div>
+            <dt>
+              <%- include("../includes/icon", { name: "globe" }) %>
+              Country
+            </dt>
+            <dd>
+              <%= listing.country || 'Not specified' %>
+            </dd>
+          </div>
+        </dl>
+      </section>
+      <% const mapLocation = [listing.location, listing.country].filter(value => typeof value === 'string' && value.trim()).map(value => value.trim()).join(', '); %>
+      <% if(mapLocation){ %>
+      <div class="wl-map-location"><a class="wl-btn wl-btn-outline wl-btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=<%= encodeURIComponent(mapLocation) %>" target="_blank" rel="noopener noreferrer"><%- include('../includes/icon', { name: 'pin' }) %> Open location in maps<span class="visually-hidden"> (opens a new tab)</span></a><p>Explore the area. This is not a precise property address.</p></div>
+      <% } %>
+      <section class="wl-reviews-section" aria-labelledby="reviews-heading">
+        <div class="wl-review-section-heading">
+          <h2 class="wl-show-section-title" id="reviews-heading">
+            Stories from this stay
+          </h2>
+          <span>
+            <%= listing.reviews ? listing.reviews.length : 0 %>
+            <%= listing.reviews && listing.reviews.length === 1 ? 'review' : 'reviews' %>
+          </span>
+        </div>
+        <% if(reviewSummary.reviewCount){ %><%- include('../includes/reviewSummary', { summary: reviewSummary }) %><% } %>
+        <% if(listing.reviews && listing.reviews.length){ %>
+        <div class="wl-reviews-list">
+          <% for(let review of listing.reviews){ %>
+          <article class="wl-review-card">
+            <div class="wl-review-header">
+              <span class="wl-review-avatar" aria-hidden="true">
+                <%= review.author && review.author.username ? review.author.username[0].toUpperCase() : 'U' %>
+              </span>
+              <strong class="wl-review-author">
+                <%= review.author && review.author.username ? review.author.username : 'Traveller' %>
+              </strong>
+              <span
+                class="wl-review-rating"
+                aria-label="<%= review.rating %> out of 5 stars"
+              >
+                <%- include("../includes/icon", { name: "star" }) %> <%= review.rating %>
+                <span>/ 5</span>
+              </span>
+            </div>
+            <p class="wl-review-comment"><%= review.comment %></p>
+            <% if(currUser && review.author && currUser._id.equals(review.author._id)){ %>
+            <div class="wl-review-footer">
+              <form
+                method="POST"
+                action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+              >
+                <button class="wl-btn wl-btn-ghost wl-btn-sm" type="submit">
+                  <%- include("../includes/icon", { name: "trash" }) %> Delete
+                  review
+                </button>
+              </form>
+            </div>
+            <% } %>
+          </article>
+          <% } %>
+        </div>
         <% } else { %>
-          <div style="background:var(--color-surface); border:var(--border); border-radius:var(--radius-lg); padding:var(--space-xl); text-align:center; margin-bottom:var(--space-xl);">
-            <p style="color:var(--color-text-secondary); margin-bottom:var(--space-md);">
-              <a href="/login" style="color:var(--color-accent); font-weight:var(--font-weight-semibold);">Log in</a> to leave a review for this property.
-            </p>
-          </div>
+        <p class="wl-review-empty">
+          No reviews yet. Be the first to share a story from this stay.
+        </p>
         <% } %>
-
-        <!-- All reviews -->
-        <% if(listing.reviews && listing.reviews.length > 0){ %>
-          <h3 class="wl-show-section-title">
-            <i class="fa-solid fa-star" style="color:var(--color-star); margin-right:0.375rem; font-size:1rem;"></i>
-            <%= listing.reviews.length %> <%= listing.reviews.length === 1 ? 'Review' : 'Reviews' %>
-          </h3>
-          <div class="wl-reviews-list">
-            <% for(let review of listing.reviews){ %>
-              <div class="wl-review-card">
-                <div class="wl-review-header">
-                  <div class="wl-review-avatar">
-                    <%= review.author && review.author.username ? review.author.username[0].toUpperCase() : 'U' %>
-                  </div>
-                  <div>
-                    <div class="wl-review-author">@<%= review.author ? review.author.username : 'User' %></div>
-                    <p class="starability-result" data-rating="<%= review.rating %>" style="margin:0;">Rated: <%= review.rating %> stars</p>
-                  </div>
-                </div>
-                <p class="wl-review-comment"><%= review.comment %></p>
-
-                <% if(currUser && review.author && currUser._id.equals(review.author._id)){ %>
-                  <div class="wl-review-footer">
-                    <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
-                      <button class="wl-btn wl-btn-danger wl-btn-sm" type="submit">
-                        <i class="fa-regular fa-trash-can"></i>
-                        Delete
-                      </button>
-                    </form>
-                  </div>
+        <% if(currUser){ %>
+        <div class="wl-review-form">
+          <h3>How was your stay?</h3>
+          <p class="wl-form-hint">Your experience helps the next traveller.</p>
+          <form
+            action="/listings/<%= listing._id %>/reviews"
+            method="POST"
+            novalidate
+            class="needs-validation"
+          >
+            <fieldset class="wl-rating-fieldset">
+              <legend class="wl-form-label">Your rating</legend>
+              <div class="wl-rating-inputs">
+                <% for(let rating=1; rating<=5; rating++){ %>
+                <input
+                  type="radio"
+                  id="rate-<%= rating %>"
+                  name="review[rating]"
+                  value="<%= rating %>"
+                  <%= rating === 1 ? 'checked' : '' %>
+                />
+                <label for="rate-<%= rating %>">
+                  <%- include("../includes/icon", { name: "star" }) %>
+                  <span>
+                    <%= rating %>
+                    <span class="visually-hidden"> <%= rating === 1 ? 'star' : 'stars' %> </span>
+                  </span>
+                </label>
                 <% } %>
               </div>
-            <% } %>
-          </div>
+            </fieldset>
+            <div class="wl-form-group">
+              <label for="comment" class="wl-form-label">Your review</label>
+              <textarea
+                name="review[comment]"
+                id="comment"
+                class="wl-form-input"
+                rows="4"
+                placeholder="What made this place memorable?"
+                required
+              ></textarea>
+              <div class="invalid-feedback">
+                Please add a comment before submitting.
+              </div>
+            </div>
+            <button class="wl-btn wl-btn-primary" type="submit">
+              Submit Review <%- include("../includes/icon", { name: "arrow" }) %>
+            </button>
+          </form>
+        </div>
         <% } else { %>
-          <p style="color:var(--color-text-muted); font-size:var(--font-size-sm);">No reviews yet — be the first to share your experience!</p>
-        <% } %>
-      </div>
-    </div>
-
-    <!-- Right: Price + Owner actions card -->
-    <aside>
-      <div class="wl-price-card">
-        <div class="wl-price-amount">
-          &#8377;<%= listing.price ? listing.price.toLocaleString("en-IN") : "—" %>
-          <span>/ night</span>
-        </div>
-        <div class="wl-price-location">
-          <i class="fa-solid fa-location-dot"></i>
-          <%= listing.location %><% if(listing.country){ %>, <%= listing.country %><% } %>
-        </div>
-
-        <div style="background:var(--color-surface-alt); border-radius:var(--radius-md); padding:var(--space-md); margin-bottom:var(--space-md); font-size:var(--font-size-sm); color:var(--color-text-secondary); text-align:center;">
-          <i class="fa-regular fa-calendar" style="margin-right:0.375rem;"></i>
-          Contact the host to check availability
-        </div>
-
-        <div style="font-size:var(--font-size-xs); color:var(--color-text-muted); text-align:center;">
-          Hosted by <strong style="color:var(--color-text-secondary);"><%= listing.owner ? listing.owner.username : 'Host' %></strong>
-        </div>
-
-        <!-- Owner controls -->
-        <% if(currUser && currUser._id.equals(listing.owner._id)){ %>
-          <div class="wl-owner-controls">
-            <a href="/listings/<%= listing._id %>/edit" class="wl-btn wl-btn-outline wl-btn-sm">
-              <i class="fa-regular fa-pen-to-square"></i>
-              Edit
-            </a>
-            <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE" style="flex:1; display:flex;">
-              <button class="wl-btn wl-btn-danger wl-btn-sm" type="submit" style="width:100%; justify-content:center;">
-                <i class="fa-regular fa-trash-can"></i>
-                Delete
-              </button>
-            </form>
+        <div class="wl-review-invite">
+          <%- include("../includes/icon", { name: "star" }) %>
+          <div>
+            <h3>Been here? Share your story.</h3>
+            <p>
+              <a href="/login">Log in</a> to leave a review for this property.
+            </p>
           </div>
+        </div>
         <% } %>
+      </section>
+    </div>
+    <aside
+      class="wl-price-card"
+      aria-label="Nightly price and property actions"
+    >
+      <p class="wl-eyebrow">MAKE ROOM FOR A GETAWAY</p>
+      <div class="wl-price-amount">
+        ₹<%= typeof listing.price === 'number' ? listing.price.toLocaleString('en-IN') : '—' %>
+        <span> / night</span>
       </div>
+      <p class="wl-price-location">
+        <%- include("../includes/icon", { name: "pin" }) %> <%= listing.location %> <% if(listing.country){ %>, <%= listing.country %> <% } %>
+      </p>
+      <hr class="wl-section-divider" />
+      <p class="wl-price-note">
+        A new setting. A different pace.<br />Get to know the space and read
+        travellers' experiences before planning your trip.
+      </p>
+      <a href="/listings" class="wl-btn wl-btn-outline"
+        >Explore more stays <%- include("../includes/icon", { name: "arrow" }) %>
+      </a>
+      <% if(currUser && listing.owner && currUser._id.equals(listing.owner._id)){ %>
+      <div class="wl-owner-controls">
+        <a
+          href="/listings/<%= listing._id %>/edit"
+          class="wl-btn wl-btn-outline wl-btn-sm"
+        >
+          <%- include("../includes/icon", { name: "edit" }) %> Edit</a
+        >
+        <form
+          method="POST"
+          action="/listings/<%= listing._id %>?_method=DELETE"
+        >
+          <button class="wl-btn wl-btn-danger wl-btn-sm" type="submit">
+            <%- include("../includes/icon", { name: "trash" }) %> Delete
+          </button>
+        </form>
+      </div>
+      <% } %>
     </aside>
-
-  </div><!-- end .wl-show-details -->
+  </div>
 </div>
+
+<% if(relatedListings.length){ %>
+<section class="wl-related-stays" aria-labelledby="related-title"><div class="wl-section-heading"><div><p class="wl-eyebrow">KEEP EXPLORING</p><h2 id="related-title">More stays in this city or country</h2></div></div><div class="wl-listings-grid"><% for(const related of relatedListings){ %><%- include('../includes/listingCard', { listing: related }) %><% } %></div></section>
+<% } %>

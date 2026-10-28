@@ -1,13 +1,14 @@
 <%- layout("/layouts/boilerplate") %>
-
 <div class="wl-error-container">
-  <div class="wl-error-icon">
-    <i class="fa-regular fa-face-frown-open"></i>
-  </div>
-  <h1 class="wl-error-title">Something went wrong</h1>
+  <span class="wl-state-icon">
+    <%- include("../includes/icon", { name: "compass" }) %>
+  </span>
+  <p class="wl-eyebrow">A SMALL DETOUR</p>
+  <h1 class="wl-error-title">
+    <%= err.statusCode === 404 ? 'This path leads somewhere else.' : err.statusCode === 400 ? 'Let’s check those details.' : 'A pause in the journey.' %>
+  </h1>
   <p class="wl-error-message"><%= err.message %></p>
-  <a href="/listings" class="wl-btn wl-btn-primary">
-    <i class="fa-solid fa-house"></i>
-    Back to Home
+  <a href="/listings" class="wl-btn wl-btn-primary"
+    >Back to exploring <%- include("../includes/icon", { name: "arrow" }) %>
   </a>
 </div>

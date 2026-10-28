@@ -1,0 +1,43 @@
+<%
+const shapes = {
+  compass:
+    '<circle cx="12" cy="12" r="9" /><path d="m16 8-2.5 5.5L8 16l2.5-5.5L16 8Z" />',
+  search: '<circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 4 4" />',
+  arrow: '<path d="M4 12h16m-6-6 6 6-6 6" />',
+  back: '<path d="M20 12H4m6-6-6 6 6 6" />',
+  pin: '<path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" /><circle cx="12" cy="10" r="2.5" />',
+  globe:
+    '<circle cx="12" cy="12" r="9" /><ellipse cx="12" cy="12" rx="4" ry="9" /><path d="M3 12h18" />',
+  plus: '<path d="M12 5v14M5 12h14" />',
+  check: '<path d="m5 12 4 4L19 6" />',
+  heart: '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/>',
+  close: '<path d="m6 6 12 12M18 6 6 18" />',
+  eye: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" /><circle cx="12" cy="12" r="3" />',
+  star: '<path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z" />',
+  home: '<path d="m3 10 9-7 9 7M5 9v12h14V9M9 21v-8h6v8" />',
+  edit: '<path d="m15 5 4 4M4 20l4-1L20 7a2.8 2.8 0 0 0-4-4L4 15l-1 6Z" />',
+  trash: '<path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7m4-7v7" />',
+  sliders:
+    '<path d="M4 7h7m4 0h5M4 17h3m4 0h9" /><circle cx="13" cy="7" r="2" /><circle cx="9" cy="17" r="2" />',
+  sun: '<circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5" />',
+  alert: '<circle cx="12" cy="12" r="9" /><path d="M12 7v6m0 3h.01" />',
+  upload: '<path d="M12 16V3m-5 5 5-5 5 5M4 15v6h16v-6" />',
+  menu: '<path d="M4 6h16M4 12h16M4 18h16" />',
+  leaf: '<path d="M20 4c-9-2-17 3-15 10s14 7 15-10ZM5 20 15 9" />',
+};
+%>
+<svg
+  class="wl-icon"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.7"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+>
+  <%- shapes[name] || shapes.compass %>
+</svg>

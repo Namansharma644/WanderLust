@@ -1,0 +1,13 @@
+<% if(pagination.totalPages > 1){ %>
+<nav class="wl-pagination" aria-label="Listing pages">
+  <p>Showing <%= pagination.start %>–<%= pagination.end %> of <%= pagination.total %> stays</p>
+  <div class="wl-pagination-links">
+    <% if(pagination.previous){ %><a href="<%= pagination.previous %>" rel="prev" aria-label="Previous page"><%- include('icon', { name: 'back' }) %></a><% } %>
+    <% let previousPage = 0; for(const item of pagination.pages){ %>
+      <% if(previousPage && item.number - previousPage > 1){ %><span class="wl-page-gap" aria-hidden="true">…</span><% } %>
+      <% if(item.number === pagination.page){ %><span class="wl-page-current" aria-current="page"><span class="visually-hidden">Page </span><%= item.number %></span><% } else { %><a href="<%= item.url %>" aria-label="Page <%= item.number %>"><%= item.number %></a><% } %>
+    <% previousPage = item.number; } %>
+    <% if(pagination.next){ %><a href="<%= pagination.next %>" rel="next" aria-label="Next page"><%- include('icon', { name: 'arrow' }) %></a><% } %>
+  </div>
+</nav>
+<% } %>

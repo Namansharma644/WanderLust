@@ -1,0 +1,15 @@
+<article class="wl-stay-card" data-listing-id="<%= listing._id %>">
+  <a href="/listings/<%= listing._id %>" class="wl-card" aria-label="<%= listing.title %>">
+    <div class="wl-card-img-wrapper">
+      <img src="<%= listing.image && listing.image.url ? listing.image.url : '/images/photo-unavailable.svg' %>" class="wl-card-img" alt="<%= listing.title %> in <%= listing.location || listing.country || 'this destination' %>" loading="lazy" width="640" height="480" data-listing-photo>
+      <span class="wl-card-arrow"><%- include('icon', { name: 'arrow' }) %></span>
+    </div>
+    <div class="wl-card-body">
+      <p class="wl-card-location"><%= listing.location || 'Discover this stay' %><% if(listing.country){ %> · <%= listing.country %><% } %></p>
+      <h3 class="wl-card-title"><%= listing.title %></h3>
+      <%- include('reviewSummary', { summary: listing.reviewSummary }) %>
+      <div class="wl-card-price"><strong>₹<%= typeof listing.price === 'number' ? listing.price.toLocaleString('en-IN') : '—' %></strong><span> / night</span><span class="tax-info"> +20% GST</span></div>
+    </div>
+  </a>
+  <%- include('saveButton', { listing }) %>
+</article>
