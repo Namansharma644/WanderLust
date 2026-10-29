@@ -1,0 +1,354 @@
+[
+  {
+    "_id": "6ade98009163fb3a073591bd",
+    "title": "Pine Ridge Budget Homestay",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A simple private room above an apple orchard in Old Manali, with warm quilts, a shared courtyard and easy access to local cafes.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 800,
+    "location": "Manali",
+    "country": "India"
+  },
+  {
+    "_id": "6ade98004e8bd2fdb95d244d",
+    "title": "Mountain View Cabin in Old Manali",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A compact timber cabin with a sunny balcony overlooking pine slopes. Walk to village bakeries and return to a quiet reading nook.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 1200,
+    "location": "Manali",
+    "country": "India"
+  },
+  {
+    "_id": "6ade98005707fd6788b21cc1",
+    "title": "Mountain View Cabin near Solang",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A two-bedroom hillside cabin with a wood-lined lounge and views toward Solang Valley. A good base for short walks and family getaways.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 2800,
+    "location": "Manali",
+    "country": "India"
+  },
+  {
+    "_id": "6ade98006c70f1b08236c033",
+    "title": "Cedar Chalet with Mountain Views",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A spacious cedar chalet on the edge of Manali, featuring large windows, a dining terrace and a comfortable lounge for slow mountain evenings.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 5500,
+    "location": "Manali",
+    "country": "India"
+  },
+  {
+    "_id": "6ade98003b61d70c10b5010f",
+    "title": "Pine View Cottage in Shimla",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A heritage-style cottage with sloping roofs, a small garden and a bright breakfast room, tucked away from the busiest streets of Shimla.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 1800,
+    "location": "Shimla",
+    "country": "India"
+  },
+  {
+    "_id": "6ade98009f9966919e8fb7b0",
+    "title": "Forest Retreat above Shimla",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A peaceful hill retreat with a wraparound veranda, forest walking trails nearby and generous living space for a small group.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 4500,
+    "location": "Shimla",
+    "country": "India"
+  },
+  {
+    "_id": "6ade980063e2e22f28e0e1ac",
+    "title": "Cloudline Homestay in Mussoorie",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A cheerful guest room in a family-run hillside home, with a mountain-facing window and a short walk to neighborhood tea stalls.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 1600,
+    "location": "Mussoorie",
+    "country": "India"
+  },
+  {
+    "_id": "6ade980037811bedf9d27c21",
+    "title": "Cloudline Cottage near Landour",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A stone cottage near the quieter lanes of Landour, with a fireplace-style reading corner, a leafy patio and broad valley views.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 4200,
+    "location": "Mussoorie",
+    "country": "India"
+  },
+  {
+    "_id": "6ade98000b1669a221e7d2c6",
+    "title": "Lake View Loft in Nainital",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A compact loft overlooking Nainital Lake, with a window seat, kitchenette and convenient access to lakeside walks and local restaurants.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 2200,
+    "location": "Nainital",
+    "country": "India"
+  },
+  {
+    "_id": "6ade98005db5d254c04e4606",
+    "title": "Lake View Lodge with Garden",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A generous lakeside lodge with a private garden, cozy bedrooms and a sheltered outdoor dining space for relaxed family holidays.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 6500,
+    "location": "Nainital",
+    "country": "India"
+  },
+  {
+    "_id": "6ade980012f7625bb3564945",
+    "title": "Palm Grove Studio in North Goa",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. An airy studio near the lanes of Anjuna, with a small kitchenette, tiled floors and space to unwind after an afternoon at the beach.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 1500,
+    "location": "Goa",
+    "country": "India"
+  },
+  {
+    "_id": "6ade980015085b11cdefe543",
+    "title": "Palm Grove Beach Cottage",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A coastal cottage near quiet South Goa beaches, featuring a shaded veranda, colorful interiors and a garden bordered by palms.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 5500,
+    "location": "Goa",
+    "country": "India"
+  },
+  {
+    "_id": "6ade9800bc5998785be942c4",
+    "title": "Palm Grove Pool Villa in Goa",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A spacious villa with a private pool, open-plan living room and tropical garden. Designed for small groups looking for a relaxed coastal break.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 12000,
+    "location": "Goa",
+    "country": "India"
+  },
+  {
+    "_id": "6ade9800b65821d95171e68e",
+    "title": "Pink City Courtyard Haveli",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A restored guest room around a traditional courtyard, with colorful textiles and easy access to the bazaars and old-city lanes of Jaipur.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 1800,
+    "location": "Jaipur",
+    "country": "India"
+  },
+  {
+    "_id": "6ade9800d6e517af1c10e946",
+    "title": "Pink City Heritage Suite",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A generous heritage-style suite with carved details, a rooftop sitting area and a calm courtyard setting after a day exploring Jaipur.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 8500,
+    "location": "Jaipur",
+    "country": "India"
+  },
+  {
+    "_id": "6ade9800ebd466af75e3e7bc",
+    "title": "Lake View Terrace Stay in Udaipur",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A welcoming guesthouse room with access to a rooftop terrace, close to Udaipur old town and its winding lakeside streets.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 3200,
+    "location": "Udaipur",
+    "country": "India"
+  },
+  {
+    "_id": "6ade98001a5577b092863559",
+    "title": "Lakeside Luxury Villa in Udaipur",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A secluded villa with spacious bedrooms, elegant lounges and a lake-facing terrace for travelers planning a special Rajasthan escape.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 18000,
+    "location": "Udaipur",
+    "country": "India"
+  },
+  {
+    "_id": "6ade9800d67e5f08cc009ec1",
+    "title": "Golden Fort Courtyard Stay",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A sandstone guesthouse near Jaisalmer Fort, offering a simple comfortable room, a shaded courtyard and rooftop views over the golden city.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 2500,
+    "location": "Jaisalmer",
+    "country": "India"
+  },
+  {
+    "_id": "6ade98001bc455e18bdd8e29",
+    "title": "Riverside Budget Room in Rishikesh",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A modest private room near the Ganga, with a shared terrace and neighborhood cafes within walking distance. A practical base for exploring Rishikesh.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 900,
+    "location": "Rishikesh",
+    "country": "India"
+  },
+  {
+    "_id": "6ade98002eaf9108ee5b2e35",
+    "title": "Riverside Retreat with Balcony",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A comfortable riverside retreat with a balcony, leafy surroundings and space to read or stretch after exploring the foothills around Rishikesh.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 3800,
+    "location": "Rishikesh",
+    "country": "India"
+  },
+  {
+    "_id": "6ade9800e34f80efa944469d",
+    "title": "Old City Guesthouse in Varanasi",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A quiet guest room in a narrow old-city lane, within walking distance of the ghats, local sweet shops and morning boat departure points.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 1100,
+    "location": "Varanasi",
+    "country": "India"
+  },
+  {
+    "_id": "6ade9800adf2ff01240bd440",
+    "title": "Tea Garden View Homestay",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A bright hill-town homestay overlooking tea slopes, with warm wood furnishings and a sheltered balcony for misty Darjeeling mornings.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 2400,
+    "location": "Darjeeling",
+    "country": "India"
+  },
+  {
+    "_id": "6ade9800ebff11b5d29fcb92",
+    "title": "Tea Garden Homestay in Munnar",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A peaceful room surrounded by tea-growing hills, with a simple breakfast space, a small garden and access to scenic countryside roads.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 2600,
+    "location": "Munnar",
+    "country": "India"
+  },
+  {
+    "_id": "6ade9800da86d7c07753389e",
+    "title": "Tea Garden Bungalow in Munnar",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A spacious plantation-style bungalow with a veranda, comfortable living room and wide tea-valley views for an unhurried family holiday.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 7500,
+    "location": "Munnar",
+    "country": "India"
+  },
+  {
+    "_id": "6ade9800cd956e205bea3086",
+    "title": "Sea Breeze Apartment in Mumbai",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A well-appointed city apartment with a bright lounge, practical workspace and easy access to neighborhood dining and waterfront walks.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 9500,
+    "location": "Mumbai",
+    "country": "India"
+  },
+  {
+    "_id": "6ade98006db17eafa02d665a",
+    "title": "Garden Studio in South Delhi",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A comfortable independent studio with a kitchenette and leafy outlook, suited to exploring South Delhi markets, galleries and neighborhood parks.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 3600,
+    "location": "Delhi",
+    "country": "India"
+  },
+  {
+    "_id": "6ade98008cc4d539a8de6a2a",
+    "title": "Courtyard Workation Loft in Bengaluru",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A modern loft with a dedicated desk, reliable indoor workspace and shared courtyard, close to cafes and leafy residential streets.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 4800,
+    "location": "Bengaluru",
+    "country": "India"
+  },
+  {
+    "_id": "6ade98004dc84fffb5acdb7b",
+    "title": "Deccan City Suite in Hyderabad",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A spacious suite with a separate sitting area and kitchenette, providing a comfortable base for Hyderabad food walks and city sightseeing.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 4000,
+    "location": "Hyderabad",
+    "country": "India"
+  },
+  {
+    "_id": "6ade9800f95c111e49a335ca",
+    "title": "Rice Terrace Villa in Bali",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A tropical villa overlooking green rice fields, with open-air sitting areas, a small garden and easy access to village walks around Ubud.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 9000,
+    "location": "Ubud, Bali",
+    "country": "Indonesia"
+  },
+  {
+    "_id": "6ade9800cc51225fc37cee3f",
+    "title": "Kyoto Garden Machiya Stay",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A restored townhouse-style stay with timber interiors, a small courtyard garden and a quiet setting for exploring Kyoto traditional neighborhoods.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 14500,
+    "location": "Kyoto",
+    "country": "Japan"
+  },
+  {
+    "_id": "6ade98000d87670068d0857a",
+    "title": "Lake View Chalet in Interlaken",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A premium alpine chalet with a large terrace, spacious bedrooms and sweeping views toward the lakes and mountain peaks around Interlaken.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 25000,
+    "location": "Interlaken",
+    "country": "Switzerland"
+  },
+  {
+    "_id": "6ade98006aee4eab4b41099e",
+    "title": "Alfama Balcony Apartment in Lisbon",
+    "description": "Demo accommodation for the WanderLust college project; photos are illustrative, not a verified property advertisement. A sunny apartment in the old quarter, with a small balcony, tiled details and a comfortable lounge after a day exploring Lisbon on foot.",
+    "image": {
+      "url": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80"
+    },
+    "price": 6200,
+    "location": "Lisbon",
+    "country": "Portugal"
+  }
+]
